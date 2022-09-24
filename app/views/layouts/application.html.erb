@@ -2,15 +2,26 @@
 <html>
   <head>
     <title>NaganoCake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <!--FontAwesomeの導入-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+　　<!--Bootstrap導入-->
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <!--ヘッダー-->
+    <%= render "layouts/header" %>
+    <main>
+      <% if flash[:notice] %>
+        <%= flash[:notice] %>
+      <% end %>
+      <%= yield %>
+    </main>
+    <!--フッター-->
+    <%= render 'layouts/footer' %>
   </body>
 </html>
